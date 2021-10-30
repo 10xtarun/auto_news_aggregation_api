@@ -1,0 +1,25 @@
+{
+  "name": "auto_news_aggregation_api",
+  "version": "1.0.0",
+  "description": "generates content from aggregated news ",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "nm": "nodemon server.js",
+    "local": "export NODE_ENV=local && npm run start",
+    "local:nm": "export NODE_ENV=local && npm run nm",
+    "dev": "export NODE_ENV=development && npm run start"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "mongo"
+  ],
+  "author": "Tarun Singh",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.14"
+  }
+}
