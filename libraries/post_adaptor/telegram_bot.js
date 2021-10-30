@@ -12,7 +12,7 @@ class TelegramBot {
             const bot = new Telegram(this._config.token)
             const CHANNEL_ID = this._config.id
 
-            bot.sendMessage(CHANNEL_ID, message)
+            return bot.sendMessage(CHANNEL_ID, message)
                 .catch(err => console.log(`telegram bot message send error - ${err}`))
 
         } catch (error) {
