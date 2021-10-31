@@ -31,15 +31,9 @@ class AutoCar {
                     try {
                         const link = newsBox[chd].attribs["href"]
                         if (link.includes("/car-news/")) {
-                            // console.log(link)
-                            // console.log("\n")
-
                             CarNews.create({
                                 link: link
                             })
-                                .then(doc => {
-                                    console.log(`doc saved - ${doc}`)
-                                })
                                 .catch(err => {
                                     if (err.code != 11000) {
                                         // ignore unique error
@@ -78,23 +72,20 @@ class AutoCar {
                         const coreParagraphs = $(`p[class=new-pare-p]`)
                         coreParagraphs.splice(coreParagraphs.length - 3)
 
-                        console.log(coreParagraphs.length)
-                        console.log(coreParagraphs.text())
-                        console.log("\n")
                         const summarizer = new NodeSummarizer()
                         summarizer.getSummary(coreParagraphs.text(), { n_sentences: 5 })
-                            .then(summary => {
+                            .then((result) => {
+                                if(!result.summary) throw new Error(`summary generation error`)
+                                console.log("summarization completed")
                                 return CarNews.findOneAndUpdate({ link: news.link }, {
                                     $set: {
-                                        content: summary,
+                                        content: result.summary,
+                                        title: result.title,
                                         parsed: true
                                     }
                                 })
-                                    .then(doc => {
-                                        console.log(`summary doc saved`)
-                                    })
                             })
-                            .catch(err => console.log(`summary doc save failed`))
+                            .catch(err => console.log(`summary doc save failed - ${err}`))
                     })
                     .catch(err => console.log(`car news fetch error - ${err} `))
             })

@@ -26,7 +26,8 @@
     "mongoose": "^6.0.12",
     "node-summarizer": "^1.0.7",
     "nodemon": "^2.0.14",
-    "telegraf": "^4.4.2"
+    "telegraf": "^4.4.2",
+    "titlegen": "^0.1.2"
   },
-  "type": "common"
+  "type": "commonjs"
 }
