@@ -1,7 +1,9 @@
 const { Agenda } = require("agenda")
 
 const jobTypes = [
-    "sync_uploads"
+    "sync_uploads",
+    "sync_news",
+    "sync_parser"
 ]
 
 const startDJ = () => {
@@ -24,7 +26,9 @@ const startDJ = () => {
     if (jobTypes.length) {
         agenda.on("ready", async () => {
             await agenda.start()
-            agenda.every("1 minutes", process.env.UPLOADS_JOB)
+            console.log(agenda.every("30 minutes", process.env.UPLOADS_JOB))
+            console.log(agenda.every("30 minutes", process.env.NEWS_JOB))
+            console.log(agenda.every("30 minutes", process.env.PARSER_JOB))
         })
     }
 

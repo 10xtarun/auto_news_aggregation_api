@@ -17,7 +17,6 @@ class NodeSummarizer {
                     titleGenerator.config.min_word_count = 7
                     titleGenerator.config.max_word_count = 12
                     const title = titleGenerator.next()
-                    console.log(title)
 
                     return {
                         summary: result.summary,
