@@ -26,9 +26,9 @@ const startDJ = () => {
     if (jobTypes.length) {
         agenda.on("ready", async () => {
             await agenda.start()
-            console.log(agenda.every("30 minutes", process.env.UPLOADS_JOB))
-            console.log(agenda.every("30 minutes", process.env.NEWS_JOB))
-            console.log(agenda.every("30 minutes", process.env.PARSER_JOB))
+            agenda.every("30 minutes", process.env.UPLOADS_JOB)
+            agenda.every("30 minutes", process.env.NEWS_JOB)
+            agenda.every("30 minutes", process.env.PARSER_JOB)
         })
     }
 

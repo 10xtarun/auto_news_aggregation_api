@@ -76,7 +76,7 @@ class AutoCar {
                         summarizer.getSummary(coreParagraphs.text(), { n_sentences: 5 })
                             .then((result) => {
                                 if(!result.summary) throw new Error(`summary generation error`)
-                                console.log("summarization completed")
+
                                 return CarNews.findOneAndUpdate({ link: news.link }, {
                                     $set: {
                                         content: result.summary,
