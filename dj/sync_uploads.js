@@ -14,7 +14,6 @@ module.exports = (agenda) => {
 
         CarNews.find({ parsed: true, posted: false }, { content: 1, title: 1 }, ((err, docs) => {
             if (err) throw new Error(`dj content fetch error - ${err}`)
-            console.log("uploads found - ", docs)
             docs.map(async doc => {
                 try {
                     const message = ""
